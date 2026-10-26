@@ -3,25 +3,76 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F4F6F9;
+  --foreground: #202B3C;
+  --muted: #66758A;
+  --border: #DCE3EB;
+  --navy: #0B1628;
+  --navy-surface: #14243A;
+  --teal: #438F96;
+  --gold: #C49A58;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Custom scrollbar for clinical reference reader */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F6F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Presentation slide & dark clinical card styling */
+.dark-deck-card {
+  background: #14243A;
+  border: 1px solid rgba(220, 227, 235, 0.12);
+  color: #F4F6F9;
+}
+
+.clinical-pearl-border {
+  border-left: 3px solid #C49A58;
+}
+
+.clinical-teal-border {
+  border-left: 3px solid #438F96;
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid #438F96;
+  outline-offset: 2px;
+}
+
+/* Print optimizations for clinical handouts */
+@media print {
+  header, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
   }
 }
